@@ -1,5 +1,7 @@
 **Transforming a column**
 
+The `Table.TransformColumns` function takes a list of lists as an argument, each of which is a **column name** and the **function** to be applied.
+
 Option 1:  
 
     #"Transformed null to Now" = Table.TransformColumns(#"Previous Step", {{"stu_timestamp_to", each if _ is null then DateTime.LocalNow() else _ }})
