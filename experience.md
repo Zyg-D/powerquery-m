@@ -1,6 +1,6 @@
 **Transforming a column**
 
-The `Table.TransformColumns` function takes a list of lists as an argument, each of which is a **column name** and the **function** to be applied.
+The `Table.TransformColumns` function takes a list of lists as an argument, each inner list contains a **column name** and the **function** to be applied.
 
 Option 1:  
 
@@ -19,4 +19,8 @@ Option 2 (using UDF):
       OnlyFirstLeft
     
     #"Transformation using UDF" = Table.TransformColumns(#"Previous Step", {"AllRows", each ClearTableUDF(_)})
+
+Option 3:
+
+    #"Lowercased Text" = Table.TransformColumns(#"Previous Step",{{"col1", Text.Lower, type text}, {"col2", Text.Lower, type text}})
 
