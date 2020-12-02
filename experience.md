@@ -24,3 +24,9 @@ Option 3:
 
     #"Lowercased Text" = Table.TransformColumns(#"Previous Step",{{"col1", Text.Lower, type text}, {"col2", Text.Lower, type text}})
 
+Option 4:
+
+    HtmlTables = Table.TransformColumns(#"Changed Type",{
+        {"col1", each Html.Table(_, {{"HtmlDecoded1",":root"}})}, 
+        {"col2", each Html.Table(_, {{"HtmlDecoded2",":root"}})} } )
+
